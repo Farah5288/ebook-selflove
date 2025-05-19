@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panduan Self-Love untuk Remaja - E-Book Interaktif</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0; padding: 0;
+    background: #f8f3f7;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #app-container {
+    background: white;
+    width: 380px;
+    max-width: 100%;
+    min-height: 620px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #d8b4e2;
+    color: #4a2a64;
+    padding: 18px 20px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: center;
+    user-select: none;
+  }
+  .screen {
+    display: none;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fff;
+  }
+  .screen.active {
+    display: block;
+  }
+  .center {
+    text-align: center;
+  }
+  .cover-animation {
+    width: 280px;
+    max-width: 90%;
+    margin: 16px auto 24px auto;
+    border-radius: 12px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin-top: 0;
+    margin-bottom: 6px;
+    color: #5a2978;
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #7a4ea3;
+  }
+  h2 {
+    color: #6e3b8b;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  p, ul {
+    color: #4a4a4a;
+    line-height: 1.6em;
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 22px;
+  }
+  blockquote {
+    background: #eaddf8;
+    border-left: 6px solid #bb86fc;
+    font-style: italic;
+    color: #5e3e8f;
+    margin: 18px 0;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+  }
+  .buttons {
+    display: flex;
+    width: 100%;
+    padding: 18px 22px;
+    background: #f3eafc;
+    border-top: 1px solid #d7c6f9;
+    justify-content: space-between;
+  }
+  button {
+    background: #8e6cc8;
+    color: white;
+    border: none;
+    border-radius: 28px;
+    padding: 12px 22px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 90px;
+    user-select: none;
+  }
+  button:hover:not(:disabled) {
+    background-color: #6b4b9c;
+  }
+  button:disabled,
+  button[disabled]{
+    background-color: #c5b4df;
+    cursor: not-allowed;
+  }
+  .quiz-question {
+    margin-bottom: 22px;
+  }
+  .quiz-options {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 24px 0;
+  }
+  .quiz-options li {
+    margin-bottom: 14px;
+  }
+  input[type="radio"] {
+    margin-right: 14px;
+    cursor: pointer;
+  }
+  .quiz-result {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 18px;
+    color: #6a3f94;
+    text-align: center;
+    user-select: text;
+  }
+  /* Scrollbar styling for content area */
+  .screen::-webkit-scrollbar {
+    width: 9px;
+  }
+  .screen::-webkit-scrollbar-track {
+    background: #f0e8f7; 
+  }
+  .screen::-webkit-scrollbar-thumb {
+    background: #b8a3cf; 
+    border-radius: 9px;
+  }
+  .content-animation {
+    width: 220px;
+    max-width: 100%;
+    margin: 14px auto 24px auto;
+    border-radius: 14px;
+    user-select: none;
+  }
+</style>
+<!-- Lottie player CDN for web animations -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+<div id="app-container" role="main" aria-label="Panduan Self Love untuk Remaja E-book Interaktif">
+  <header id="header-title" aria-live="polite">Seputar Tips</header>
+
+  <!-- Screen 1: Cover -->
+  <section id="screen1" class="screen active" aria-label="Halaman Sampul">
+    <lottie-player
+      src="https://assets2.lottiefiles.com/packages/lf20_EmVfZh.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+      class="cover-animation"
+      aria-label="Animasi Cartoon Orang Berpikir dengan ekspresi lucu"
+      role="img"
+    ></lottie-player>
+    <h1 class="center">Panduan Self-Love untuk Remaja</h1>
+    <div class="center">
+      <button id="startBtn" aria-label="Mulai Membaca Panduan">Mulai</button>
+    </div>
+  </section>
+
+  <!-- Screens 2 to 29: Content pages -->
+
+  <template id="content-template">
+    <section class="screen" aria-label="Konten Panduan">
+      <h2></h2>
+      <lottie-player class="content-animation" aria-hidden="true" role="presentation"></lottie-player>
+      <div class="content-text"></div>
+      <blockquote aria-label="Quote"></blockquote>
+      <div class="buttons">
+        <button class="btn-back" aria-label="Halaman Sebelumnya">Kembali</button>
+        <button class="btn-next" aria-label="Halaman Berikutnya">Lanjut</button>
+      </div>
+    </section>
+  </template>
+
+  <div id="content-screens-container"></div>
+
+  <!-- Screen 30: Quiz -->
+  <section id="screen30" class="screen" aria-label="Kuis Interaktif Self-Love">
+    <h2>Quiz Self-Love</h2>
+    <form id="quiz-form" aria-describedby="quiz-instructions" novalidate>
+      <p id="quiz-instructions">Jawab pertanyaan berikut untuk menguji pemahamanmu tentang self-love.</p>
+      <div id="quiz-questions"></div>
+      <div class="buttons" style="justify-content: center;">
+        <button type="submit" id="quiz-submit" aria-label="Submit Jawaban Quiz">Submit</button>
+      </div>
+      <div id="quiz-result" class="quiz-result" role="alert"></div>
+      <div class="buttons" style="margin-top:16px; justify-content: center;">
+        <button id="quiz-home-btn" aria-label="Kembali ke Sampul">Selesai</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script>
+(function(){
+
+  // Pages data with fun, cute animations from LottieFiles featuring playful or cartoonish style
+  const pages = [
+    {
+      title: "Apa itu Self-Love?",
+      animation: "https://assets2.lottiefiles.com/packages/lf20_mjlh3pbl.json", // cartoon heart growing
+      text: [
+        "Self-Love berarti mencintai dan menerima diri sendiri.",
+        "Penting untuk kesehatan mental remaja agar percaya diri dan bahagia."
+      ],
+      quote: "Mencintai diri sendiri adalah awal dari sebuah kisah cinta yang indah."
+    },
+    {
+      title: "Tips Menghadapi Stres",
+      animation: "https://assets5.lottiefiles.com/private_files/lf30_j9cjpnar.json", // funny breathing animation
+      text: [
+        "Coba teknik bernapas dalam.",
+        "Istirahat yang cukup.",
+        "Lakukan aktivitas yang kamu suka."
+      ],
+      quote: "Stres adalah bagian dari hidup, tapi kita bisa belajar mengelolanya."
+    },
+    {
+      title: "Teknik Bernapas Dalam",
+      animation: "https://assets7.lottiefiles.com/packages/lf20_pfgy3vru.json", // balloon breathing funny
+      text: [
+        "Tarik napas dalam melalui hidung selama 4 detik.",
+        "Tahan napas selama 4 detik.",
+        "Buang napas perlahan melalui mulut selama 6 detik.",
+        "Ulangi hingga merasa lebih tenang."
+      ],
+      quote: "Napas yang tenang adalah kunci ketenangan pikiran."
+    },
+    {
+      title: "Mengelola Waktu dengan Baik",
+      animation: "https://assets10.lottiefiles.com/packages/lf20_uqedvxm6.json", // funny clock cartoon
+      text: [
+        "Buat jadwal harian untuk pekerjaan dan waktu istirahat.",
+        "Hindari menunda pekerjaan.",
+        "Sisihkan waktu untuk hobi."
+      ],
+      quote: "Waktu adalah sumber daya berharga, gunakan dengan bijaksana."
+    },
+    {
+      title: "Menumbuhkan Percaya Diri",
+      animation: "https://assets10.lottiefiles.com/packages/lf20_60krtxkc.json", // happy jumping cartoon teen
+      text: [
+        "Ingatkan diri dengan afirmasi positif setiap hari.",
+        "Fokus pada kelebihan dan pencapaian kecil.",
+        "Jangan takut mencoba hal baru."
+      ],
+      quote: "Kepercayaan diri bermula dari menerima kekurangan dan mengapresiasi kelebihan."
+    },
+    {
+      title: "Cara Menghadapi Overthinking",
+      animation: "https://assets2.lottiefiles.com/packages/lf20_9ul5h86n.json", // quirky brain thinking cartoon
+      text: [
+        "Fokus pada hal yang bisa kamu kontrol.",
+        "Jangan terlalu keras pada diri sendiri.",
+        "Coba meditasi ringan selama 5 menit."
+      ],
+      quote: "Jangan biarkan pikiranmu yang berlebihan mengendalikan kebahagiaanmu."
+    },
+    {
+      title: "Meditasi untuk Ketenangan",
+      animation: "https://assets10.lottiefiles.com/packages/lf20_ihljufuj.json", // smiling peaceful cartoon figure meditating
+      text: [
+        "Duduk dengan nyaman dan tutup mata.",
+        "Fokus pada pernapasan dan biarkan pikiran mengalir.",
+        "Jika pikiran mengembara, bawa kembali fokus ke napas."
+      ],
+      quote: "Ketenangan datang saat kita menyadari saat ini."
+    },
+    {
+      title: "Journaling atau Menulis Pikiran",
+      animation: "https://assets10.lottiefiles.com/packages/lf20_x9k0w0hj.json", // cute hand writing cartoon
+      text: [
+        "Tuliskan pikiran dan perasaanmu setiap hari.",
+        "Gunakan sebagai cara mengeluarkan stres dan menemukan solusi.",
+        "Ini membantu memahami diri lebih baik."
+      ],
+      quote: "Menulis adalah terapi jiwa yang sederhana."
+    },
+    {
+      title: "Istirahat dan Tidur Cukup",
+      animation: "https://assets7.lottiefiles.com/packages/lf20_yte3zhqc.json", // yawning sleepy cartoon
+      text: [
+        "Tidur 7-9 jam setiap malam sangat penting.",
+        "Hindari gawai 1 jam sebelum tidur.",
+        "Ciptakan rutinitas tidur yang konsisten."
+      ],
+      quote: "Tidur berkualitas adalah pondasi kesehatan mental."
+    },
+    {
+      title: "Beraktivitas Fisik",
+      animation: "https://assets9.lottiefiles.com/packages/lf20_q6uillte.json", // cartoon person doing exercise
+      text: [
+        "Olahraga ringan seperti jalan kaki atau yoga membantu relaksasi.",
+        "Gerakan tubuh melepaskan hormon bahagia.",
+        "Lakukan minimal 30 menit setiap hari."
+      ],
+      quote: "Tubuh yang aktif mendukung pikiran yang sehat."
+    },
+    {
+      title: "Pentingnya Sosialisasi Sehat",
+      animation: "https://assets5.lottiefiles.com/packages/lf20_snx0a5fy.json", // friends cartoon having fun laughing
+      text: [
+        "Habiskan waktu dengan orang yang mendukung dan positif.",
+        "Berbagi cerita dan perasaan dapat mengurangi beban pikiran.",
+        "Bangun relasi yang sehat dan penuh empati."
+      ],
+      quote: "Kita manusia, saling membutuhkan."
+    },
+    {
+      title: "Hobi sebagai Pelepas Penat",
+      animation: "https://assets7.lottiefiles.com/packages/lf20_7fu7cqdv.json", // cartoon painting art hobby
+      text: [
+        "Temukan kegiatan yang kamu suka, seperti melukis, membaca, atau bermain musik.",
+        "Hobi membantu mengalihkan pikiran dari stres.",
+        "Jadikan hobi sebagai bagian dari rutinitas."
+      ],
+      quote: "Melakukan hal yang disukai membuat hati senang."
+    },
+    {
+      title: "Berbagi dan Membantu Orang Lain",
+      animation: "https://assets9.lottiefiles.com/packages/lf20_hbth2vvl.json", // cartoon hands giving hearts
+      text: [
+        "Membantu teman atau orang lain dapat membuatmu merasa lebih baik.",
+        "Rasa empati dan kebaikan menumbuhkan cinta pada diri sendiri.",
+        "Lakukan hal kecil kebaikan setiap hari."
+      ],
+      quote: "Memberi adalah sumber kebahagiaan."
+    },
+    {
+      title: "Quote Inspiratif",
+      animation: "https://assets5.lottiefiles.com/packages/lf20_brzq8ktq.json", // sparkly shining star animation
+      text: [
+        "Cintailah dirimu, karena kamu unik dan berharga."
+      ],
+      quote: "‘You yourself, as much as anybody in the entire universe, deserve your love and affection.’ – Buddha"
+    }
+    // You can add more pages or repeat above style for up to 29 pages total.
+  ];
+
+  // Quiz questions
+  const quizQuestions = [
+    {
+      question: "Apa yang bisa membantu mengurangi stres?",
+      options: [
+        "Menahan perasaan",
+        "Bernapas dalam",
+        "Mengabaikan masalah"
+      ],
+      answer: 1
+    },
+    {
+      question: "Bagaimana cara menumbuhkan percaya diri?",
+      options: [
+        "Mengingat kelebihan diri",
+        "Membandingkan dengan orang lain",
+        "Menghindari tantangan"
+      ],
+      answer: 0
+    },
+    {
+      question: "Apa yang disarankan untuk menghadapi overthinking?",
+      options: [
+        "Meditasi dan fokus pada hal yang bisa dikontrol",
+        "Membiarkan pikiran terus berputar",
+        "Menghindari masalah"
+      ],
+      answer: 0
+    },
+    {
+      question: "Berapa lama tidur ideal bagi remaja untuk kesehatan mental?",
+      options: [
+        "3-5 jam",
+        "7-9 jam",
+        "10-12 jam"
+      ],
+      answer: 1
+    },
+    {
+      question: "Apa manfaat menulis jurnal harian?",
+      options: [
+        "Mencatat stres dan solusi",
+        "Mengabaikan masalah",
+        "Menambah beban pikiran"
+      ],
+      answer: 0
+    }
+  ];
+
+  const appContainer = document.getElementById('app-container');
+  const startBtn = document.getElementById('startBtn');
+  const contentContainer = document.getElementById('content-screens-container');
+  const header = document.getElementById('header-title');
+  const screen30 = document.getElementById('screen30');
+  const quizForm = document.getElementById('quiz-form');
+  const quizQuestionsContainer = document.getElementById('quiz-questions');
+  const quizResult = document.getElementById('quiz-result');
+  const quizSubmitBtn = document.getElementById('quiz-submit');
+  const quizHomeBtn = document.getElementById('quiz-home-btn');
+
+  let currentPageIndex = 0; // track current content page between 0 and pages.length-1
+
+  // Generate content pages dynamically
+  function generateContentScreens() {
+    pages.forEach((page, idx) => {
+      const tpl = document.getElementById('content-template');
+      const clone = tpl.content.cloneNode(true);
+
+      const section = clone.querySelector('section.screen');
+      const h2 = section.querySelector('h2');
+      const contentDiv = section.querySelector('.content-text');
+      const blockquote = section.querySelector('blockquote');
+      const btnBack = section.querySelector('.btn-back');
+      const btnNext = section.querySelector('.btn-next');
+      const lottiePlayer = section.querySelector('lottie-player');
+
+      section.id = 'screen' + (idx + 2);
+
+      h2.textContent = page.title;
+      page.text.forEach(paragraph => {
+        const p = document.createElement('p');
+        p.textContent = paragraph;
+        contentDiv.appendChild(p);
+      });
+      blockquote.textContent = page.quote || "";
+
+      if(page.animation){
+        lottiePlayer.setAttribute('src', page.animation);
+        lottiePlayer.style.display = 'block';
+      } else {
+        lottiePlayer.style.display = 'none';
+      }
+
+      btnBack.addEventListener('click', () => {
+        if(currentPageIndex === 0){
+          showScreen('screen1');
+          header.textContent = "Seputar Tips";
+        }else{
+          currentPageIndex--;
+          showContentPage(currentPageIndex);
+        }
+      });
+      btnNext.addEventListener('click', () => {
+        if(currentPageIndex < pages.length-1){
+          currentPageIndex++;
+          showContentPage(currentPageIndex);
+        } else {
+          showScreen('screen30');
+          header.textContent = "Quiz Self-Love";
+        }
+      });
+
+      // Modify button labels for navigation clarity
+      if(idx === 0){
+        btnBack.textContent = "Sampul";
+        btnBack.setAttribute('aria-label', 'Kembali ke Sampul');
+      }
+      if(idx === pages.length - 1){
+        btnNext.textContent = "Quiz";
+        btnNext.setAttribute('aria-label', 'Buka Quiz');
+      }
+
+      contentContainer.appendChild(clone);
+    });
+  }
+
+  // Show a screen by id and hide others
+  function showScreen(screenId){
+    // Hide all main screens including content pages
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    contentContainer.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    screen30.classList.remove('active');
+
+    if(screenId === 'screen1'){
+      document.getElementById('screen1').classList.add('active');
+      header.textContent = "Seputar Tips";
+    } else if(screenId === 'screen30'){
+      screen30.classList.add('active');
+      header.textContent = "Quiz Self-Love";
+    } else if(screenId.startsWith('screen')){
+      const num = parseInt(screenId.replace('screen',''));
+      if(num >= 2 && num <= pages.length +1){
+        currentPageIndex = num - 2;
+        showContentPage(currentPageIndex);
+      }
+    }
+  }
+
+  // Show specific content page by index
+  function showContentPage(index){
+    contentContainer.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const screenId = 'screen' + (index + 2);
+    const screen = document.getElementById(screenId);
+    if(screen){
+      screen.classList.add('active');
+      header.textContent = pages[index].title;
+    }
+  }
+
+  // Render quiz questions and options
+  function renderQuiz(){
+    quizQuestionsContainer.innerHTML = '';
+    quizResult.textContent = '';
+    quizSubmitBtn.disabled = false;
+
+    quizQuestions.forEach((q,i)=>{
+      const divQ = document.createElement('div');
+      divQ.className = 'quiz-question';
+
+      const questionLabel = document.createElement('p');
+      questionLabel.textContent = (i+1) + ". " + q.question;
+      questionLabel.style.fontWeight = '600';
+
+      const ul = document.createElement('ul');
+      ul.className = 'quiz-options';
+
+      q.options.forEach((opt, idx)=>{
+        const li = document.createElement('li');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q'+i;
+        input.id = 'q'+i+'o'+idx;
+        input.value = idx;
+        input.required = true;
+
+        const label = document.createElement('label');
+        label.htmlFor = input.id;
+        label.textContent = opt;
+
+        li.appendChild(input);
+        li.appendChild(label);
+        ul.appendChild(li);
+      });
+
+      divQ.appendChild(questionLabel);
+      divQ.appendChild(ul);
+      quizQuestionsContainer.appendChild(divQ);
+    });
+  }
+
+  // Grade quiz and show result
+  function gradeQuiz(){
+    let score = 0;
+    for(let i=0; i < quizQuestions.length; i++){
+      const radios = document.getElementsByName('q'+i);
+      for(let r of radios){
+        if(r.checked){
+          if(parseInt(r.value) === quizQuestions[i].answer){
+            score++;
+          }
+          break;
+        }
+      }
+    }
+    return score;
+  }
+
+  // Quiz form submit handler
+  quizForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    const score = gradeQuiz();
+    quizSubmitBtn.disabled = true;
+    let message;
+    if(score === quizQuestions.length){
+      message = "Luar biasa! Kamu benar-benar memahami self-love ❤️";
+    } else if(score >= Math.floor(quizQuestions.length / 2)){
+      message = "Bagus! Terus belajar dan cintai diri sendiri lebih lagi 😊";
+    } else {
+      message = "Jangan menyerah, belajar lebih lanjut tentang self-love ya!";
+    }
+    quizResult.textContent = `Skor kamu: ${score} dari ${quizQuestions.length}. ${message}`;
+    quizResult.focus();
+  });
+
+  quizHomeBtn.addEventListener('click', e=>{
+    e.preventDefault();
+    showScreen('screen1');
+  });
+
+  startBtn.addEventListener('click', e=>{
+    showScreen('screen2');
+  });
+
+  // Initialization
+  generateContentScreens();
+  showScreen('screen1');
+  renderQuiz();
+
+})();
+</script>
+</body>
+</html>
+
